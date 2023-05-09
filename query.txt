@@ -1,0 +1,57 @@
+1)
+In [4]: models.Worker.objects.filter(depart='1')
+Out[4]: <QuerySet [<Worker: Лапочка>, <Worker: Чипс>]>
+
+2)
+In [6]: models.Worker.objects.all()
+Out[6]: <QuerySet [<Worker: Лапочка>, <Worker: Барсик>, <Worker: Соня>, <Worker: Руслан>, <Worker: Ангелочек>, <
+Worker: Алигатор>, <Worker: Чипс>, <Worker: Макаронина>]>
+
+3)
+In [10]: models.Worker.objects.filter(name__icontains='л')
+Out[10]: <QuerySet [<Worker: Руслан>, <Worker: Ангелочек>, <Worker: Алигатор>]>
+
+4)
+In [13]: models.Worker.objects.filter(surname = '')
+Out[13]: <QuerySet [<Worker: Лапочка>, <Worker: Барсик>, <Worker: Ангелочек>, <Worker: Чипс>]>
+
+5)
+In [16]: models.Worker.objects.filter(surname = '').count()
+Out[16]: 4
+
+6)
+In [20]: models.Worker.objects.filter(depart__lt='3')
+Out[20]: <QuerySet [<Worker: Лапочка>, <Worker: Чипс>, <Worker: Барсик>, <Worker: Ангелочек>]>
+
+7)
+In [23]: models.Worker.objects.get(pk=3)
+Out[23]: <Worker: Соня>
+
+8)
+In [26]: models.Position.objects.exclude(name__contains='с')
+Out[26]: <QuerySet [<Position: Руководитель>, <Position: Сотрудник>, <Position: Руководитель младших гонщиков>, 
+<Position: Младший гонщик>, <Position: Главный бухгалтер>, <Position: Сотрудник>, <Position: Фронтенд разработчи
+к>, <Position: Бэкенд разработчик>, <Position: Лидер группы>]>
+
+9)
+In [34]: models.Worker.objects.annotate(Avg('tradeunion')).values()
+Out[34]: <QuerySet [{'id': 1, 'name': 'Лапочка', 'surname': '', 'phone': 'неть', 'email': 'cutie@catsarethebest.
+cat', 'position_id': 2, 'depart_id': 1, 'tradeunion__avg': 1.5}, {'id': 7, 'name': 'Чипс', 'surname': '', 'phone
+': 'неть', 'email': 'chipschips@chips.chips', 'position_id': 2, 'depart_id': 1, 'tradeunion__avg': 2.5}, {'id': 
+2, 'name': 'Барсик', 'surname': '', 'phone': '+79994564567', 'email': 'barsik@email.com', 'position_id': 4, 'dep
+art_id': 2, 'tradeunion__avg': 1.5}, {'id': 5, 'name': 'Ангелочек', 'surname': '', 'phone': 'неть', 'email': 'an
+gelsarereal@true.cat', 'position_id': 7, 'depart_id': 2, 'tradeunion__avg': 1.0}, {'id': 3, 'name': 'Соня', 'sur
+name': 'Сонная', 'phone': 'неть', 'email': 'sonya@sleep.com', 'position_id': 9, 'depart_id': 3, 'tradeunion__avg
+': 2.0}, {'id': 4, 'name': 'Руслан', 'surname': 'Русланович', 'phone': '+7 (666) 666-66-66', 'email': 'ruslan.ka
+k@ustal.com', 'position_id': 13, 'depart_id': 5, 'tradeunion__avg': 3.0}, {'id': 6, 'name': 'Алигатор', 'surname
+': 'Злобный', 'phone': '+79175671234', 'email': 'eat@he.cat', 'position_id': 14, 'depart_id': 5, 'tradeunion__av
+g': 2.0}, {'id': 8, 'name': 'Макаронина', 'surname': 'Невкусная', 'phone': '+78904563745', 'email': 'ew@ew.cat',
+ 'position_id': 15, 'depart_id': 5, 'tradeunion__avg': 2.5}]>
+
+10)
+In [35]: models.Worker.objects.values('name','position')
+Out[35]: <QuerySet [{'name': 'Лапочка', 'position': 2}, {'name': 'Барсик', 'position': 4}, {'name': 'Соня', 'pos
+ition': 9}, {'name': 'Руслан', 'position': 13}, {'name': 'Ангелочек', 'position': 7}, {'name': 'Алигатор', 'posi
+tion': 14}, {'name': 'Чипс', 'position': 2}, {'name': 'Макаронина', 'position': 15}]>
+
+
