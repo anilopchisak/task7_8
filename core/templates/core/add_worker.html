@@ -1,0 +1,31 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="list-container">
+            <center>
+                <form class="form-floating">
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                    <label for="name">Имя</label>
+                </form>
+                <form class="form-floating">
+                    <input type="text" class="form-control" id="position" placeholder="Position">
+                    <label for="position">Должность</label>
+                </form>
+                <form class="form-floating">
+                    <input type="text" class="form-control" id="address" placeholder="Address">
+                    <label for="address">Адрес</label>
+                </form>
+                <form class="form-floating">
+                    <input type="text" class="form-control" id="phone" placeholder="+11111111111">
+                    <label for="phone">Телефон</label>
+                </form>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <label for="email">E-mail</label>
+                </div>
+                <button type="submit" class="btn btn-outline-info">Добавить</button>
+            </center>
+        </div>
+    </div>
+{% endblock %}

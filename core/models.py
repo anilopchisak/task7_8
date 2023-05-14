@@ -49,3 +49,4 @@ class TradeUnion(models.Model):
     class Meta:
         verbose_name = 'Trade union'
         verbose_name_plural = 'Trade unions'
+
